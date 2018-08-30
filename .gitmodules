@@ -1,0 +1,3 @@
+[submodule "contracts/bigint"]
+	path = contracts/bigint
+	url = https://github.com/playerone-id/biginteger-for-eosio.git
