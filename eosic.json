@@ -9,7 +9,16 @@
       "name": "musig",
       "version": "0.0.1.1",
       "description": "Generic EOS contract",
-      "entry": "musig.cpp"
+      "entry": "musig.cpp",
+      "link": [
+        "bigint/eos_mem_wrapper.cpp",
+        "bigint/BigInteger.cpp",
+        "bigint/BigIntegerAlgorithms.cpp",
+        "bigint/BigIntegerUtils.cpp",
+        "bigint/BigUnsigned.cpp",
+        "bigint/BigUnsignedInABase.cpp"
+      ],
+      "checksum": "38a5ca1f8729876870cade42cf1c06bd"
     }
   }
 }
