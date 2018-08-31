@@ -1,0 +1,22 @@
+{
+  "name": "ducor-eos-schnorr",
+  "version": "0.0.1",
+  "description": "Musig on EOSIO",
+  "scripts": {
+    "test": "eosic test",
+    "compile": "eosic compile",
+    "migrate": "eosic migrate"
+  },
+  "dependencies": {
+    "eosjs": "16.0.6",
+    "typescript": "3.0.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.9.3",
+    "chai": "4.1.2",
+    "eosic": "DucaturFw/eosic",
+    "mocha": "5.2.0"
+  }
+}

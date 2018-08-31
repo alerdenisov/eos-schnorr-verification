@@ -1,0 +1,7 @@
+/builtin
+/bin
+bashrc
+.DS_Store
+*.log
+
+/node_modules

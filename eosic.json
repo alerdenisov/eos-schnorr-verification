@@ -1,0 +1,16 @@
+{
+  "name": "ducor-eos-schnorr",
+  "version": "0.0.1",
+  "description": "Musig on EOSIO",
+  "tests": "./test",
+  "migrations": "./migrate",
+  "contracts": {
+    "musig": {
+      "name": "musig",
+      "version": "0.0.1.1",
+      "description": "Generic EOS contract",
+      "entry": "musig.cpp",
+      "checksum": "2adc39432ea9c8eae3b1170b09abf1c4"
+    }
+  }
+}
