@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const eosic = __importStar(require("eosic"));
 const eosjs_1 = __importDefault(require("eosjs"));
 require("mocha");
-describe("priceoraclize", () => {
+describe("musig", () => {
     let musigAccount, musigContract;
     const [pub, wif] = [
         "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
@@ -21,22 +21,23 @@ describe("priceoraclize", () => {
     ];
     const eos = eosjs_1.default({
         httpEndpoint: "http://0.0.0.0:8888",
-        keyProvider: wif
+        keyProvider: wif,
+        expireInSeconds: 1000
     });
     beforeEach(async () => {
         ({
             account: musigAccount,
             contract: musigContract
         } = await eosic.createContract(pub, eos, "musig"));
-        const charMap = ["a", "b", "c", "d", "e", "f", "g", "h", "k", "l", "m"];
-        const pid = Array(5)
-            .fill(0)
-            .map(() => charMap[Math.floor(Math.random() * charMap.length)])
-            .join("");
+        console.log(await eos.getAccount({
+            account_name: musigAccount,
+            json: true
+        }));
     });
     it("exec", async () => {
-        await musigContract.exec({
+        console.log(musigAccount);
+        console.log(await musigContract.exec({
             authorization: [musigAccount]
-        });
+        }));
     });
 });

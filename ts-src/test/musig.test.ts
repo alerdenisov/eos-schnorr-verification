@@ -4,10 +4,10 @@ import { assert } from "chai";
 import "mocha";
 
 interface IMusigContract extends IEosContract {
-  exec(extra?: IEosjsCallsParams): Promise<any>;
+  exec(extra?: any): Promise<any>;
 }
 
-describe("priceoraclize", () => {
+describe("musig", () => {
   let musigAccount: Name, musigContract: IMusigContract;
 
   const [pub, wif] = [
@@ -17,7 +17,8 @@ describe("priceoraclize", () => {
 
   const eos = Eos({
     httpEndpoint: "http://0.0.0.0:8888",
-    keyProvider: wif
+    keyProvider: wif,
+    expireInSeconds: 1000
   });
 
   beforeEach(async () => {
@@ -26,16 +27,20 @@ describe("priceoraclize", () => {
       contract: musigContract
     } = await eosic.createContract<IMusigContract>(pub, eos, "musig"));
 
-    const charMap = ["a", "b", "c", "d", "e", "f", "g", "h", "k", "l", "m"];
-    const pid = Array(5)
-      .fill(0)
-      .map(() => charMap[Math.floor(Math.random() * charMap.length)])
-      .join("");
+    console.log(
+      await eos.getAccount({
+        account_name: musigAccount,
+        json: true
+      })
+    );
   });
 
   it("exec", async () => {
-    await musigContract.exec({
-      authorization: [musigAccount]
-    });
+    console.log(musigAccount);
+    console.log(
+      await musigContract.exec({
+        authorization: [musigAccount]
+      })
+    );
   });
 });

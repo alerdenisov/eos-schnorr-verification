@@ -11,9 +11,8 @@ public:
   // @abi action
   void exec()
   {
-    // create bn 65536
     BigInteger a = 65536;
-    print("Too much: ", (a * a * a * a * a * a * a * a));
+    print("Too much: ", (a * a * a * a * a * a));
   }
 };
 
