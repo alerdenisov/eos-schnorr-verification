@@ -1,5 +1,5 @@
 #include <eosiolib/eosio.hpp>
-#include "../bigint/BigIntegerLibrary.hpp"
+#include "./bigint/BigIntegerLibrary.hpp"
 
 using namespace eosio;
 
@@ -8,9 +8,10 @@ class musig : public eosio::contract
 public:
   using contract::contract;
 
-  /// @abi action
+  // @abi action
   void exec()
   {
+    // create bn 65536
     BigInteger a = 65536;
     print("Too much: ", (a * a * a * a * a * a * a * a));
   }
