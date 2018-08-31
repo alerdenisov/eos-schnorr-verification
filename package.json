@@ -8,12 +8,15 @@
     "migrate": "eosic migrate"
   },
   "dependencies": {
-    "binaryen": "37.0.0",
-    "eosjs": "14.0.0"
+    "eosjs": "16.0.6",
+    "typescript": "3.0.3"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.9.3",
     "chai": "4.1.2",
-    "mocha": "5.2.0",
-    "eosic": "0.0.1"
+    "eosic": "DucaturFw/eosic",
+    "mocha": "5.2.0"
   }
 }
