@@ -40,18 +40,28 @@ include_directories(AFTER ${BOOST_ROOT}/include)
 
 # CONTRACT BUILDING START 
 file(GLOB musig_sources
-    "**/*.h"
-    "**/*.hpp"
-    "**/*.cpp"
-    "**/*.c"
+    "bigint/*.h"
+    "bigint/*.hpp"
+    "bigint/*.cpp"
+    "bigint/*.c"
+    "ecurve/*.h"
+    "ecurve/*.hpp"
+    "ecurve/*.cpp"
+    "ecurve/*.c"
     "*.h"
     "*.hpp"
     "*.cpp"
     "*.c"
 )
-# set(musig_sources ${CMAKE_CURRENT_SOURCE_DIR}/musig.cpp)
+
 add_executable(musig.wasm ${musig_sources})
-target_include_directories(musig.wasm PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/ ${CMAKE_CURRENT_SOURCE_DIR}/bigint)
+target_include_directories(musig.wasm
+    PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}/
+    ${CMAKE_CURRENT_SOURCE_DIR}/bigint
+    ${CMAKE_CURRENT_SOURCE_DIR}/ecurve
+)
+
 set_target_properties(musig.wasm
    PROPERTIES
    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
