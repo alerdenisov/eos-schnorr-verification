@@ -58,6 +58,7 @@ add_executable(musig.wasm ${musig_sources})
 target_include_directories(musig.wasm
     PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/
+
     ${CMAKE_CURRENT_SOURCE_DIR}/bigint
     ${CMAKE_CURRENT_SOURCE_DIR}/ecurve
 )

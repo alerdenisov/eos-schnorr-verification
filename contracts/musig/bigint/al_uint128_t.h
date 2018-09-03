@@ -34,8 +34,9 @@ to do a general rewrite of this class.
 #ifndef __AL_UINT128_T__
 #define __AL_UINT128_T__
 
+#include <eosiolib/system.h>
 #include <cstdint>
-#include <ostream>
+// #include <ostream>
 #include <stdexcept>
 #include <string>
 #include <type_traits>
@@ -565,5 +566,5 @@ T &operator%=(T &lhs, const al_uint128_t &rhs)
 }
 
 // IO Operator
-std::ostream &operator<<(std::ostream &stream, const al_uint128_t &rhs);
+// std::ostream &operator<<(std::ostream &stream, const al_uint128_t &rhs);
 #endif

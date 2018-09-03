@@ -1,6 +1,5 @@
 #include "al_uint256_t.h"
 
-const al_uint128_t al_uint128_0(0);
 const al_uint128_t al_uint128_64(64);
 const al_uint128_t al_uint128_128(128);
 const al_uint128_t al_uint128_256(256);
@@ -448,7 +447,7 @@ std::pair<al_uint256_t, al_uint256_t> al_uint256_t::divmod(const al_uint256_t &l
     // Save some calculations /////////////////////
     if (rhs == al_uint256_0)
     {
-        throw std::domain_error("Error: division or modulus by 0");
+        eosio_assert(true, "Error: division or modulus by 0");
     }
     else if (rhs == al_uint256_1)
     {
@@ -601,7 +600,7 @@ std::string al_uint256_t::str(uint8_t base, const unsigned int &len) const
 {
     if ((base < 2) || (base > 36))
     {
-        throw std::invalid_argument("Base must be in the range 2-36");
+        eosio_assert(true, "Base must be in the range 2-36");
     }
     std::string out = "";
     if (!(*this))
@@ -856,19 +855,19 @@ al_uint128_t &operator%=(al_uint128_t &lhs, const al_uint256_t &rhs)
     return lhs;
 }
 
-std::ostream &operator<<(std::ostream &stream, const al_uint256_t &rhs)
-{
-    if (stream.flags() & stream.oct)
-    {
-        stream << rhs.str(8);
-    }
-    else if (stream.flags() & stream.dec)
-    {
-        stream << rhs.str(10);
-    }
-    else if (stream.flags() & stream.hex)
-    {
-        stream << rhs.str(16);
-    }
-    return stream;
-}
+// std::ostream &operator<<(std::ostream &stream, const al_uint256_t &rhs)
+// {
+//     if (stream.flags() & stream.oct)
+//     {
+//         stream << rhs.str(8);
+//     }
+//     else if (stream.flags() & stream.dec)
+//     {
+//         stream << rhs.str(10);
+//     }
+//     else if (stream.flags() & stream.hex)
+//     {
+//         stream << rhs.str(16);
+//     }
+//     return stream;
+// }
