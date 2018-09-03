@@ -410,7 +410,7 @@ class al_uint256_t
     uint16_t bits() const;
 
     // Get string representation of value
-    std::string str(uint8_t base = 10, const unsigned int &len = 0) const;
+    void str(uint8_t base, char *out, const unsigned int &len) const;
 };
 
 // useful values

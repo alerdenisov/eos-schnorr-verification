@@ -441,31 +441,23 @@ uint8_t al_uint128_t::bits() const
     return out;
 }
 
-std::string al_uint128_t::str(uint8_t base, const unsigned int &len) const
+void al_uint128_t::str(uint8_t base, char *out, const unsigned int &len) const
 {
     if ((base < 2) || (base > 16))
     {
         eosio_assert(true, "Base must be in the range [2, 16]");
     }
-    std::string out = "";
-    if (!(*this))
+    for (size_t index = 0; index < len; index++)
     {
-        out = "0";
+        out[index] = '0';
     }
-    else
+    std::pair<al_uint128_t, al_uint128_t> qr(*this, al_uint128_0);
+    size_t index = len;
+    do
     {
-        std::pair<al_uint128_t, al_uint128_t> qr(*this, al_uint128_0);
-        do
-        {
-            qr = divmod(qr.first, base);
-            out = "0123456789abcdef"[(uint8_t)qr.second] + out;
-        } while (qr.first);
-    }
-    if (out.size() < len)
-    {
-        out = std::string(len - out.size(), '0') + out;
-    }
-    return out;
+        qr = divmod(qr.first, base);
+        out[index--] = "0123456789abcdef"[(uint8_t)qr.second];
+    } while (qr.first && index >= 0);
 }
 
 al_uint128_t operator<<(const bool &lhs, const al_uint128_t &rhs)
