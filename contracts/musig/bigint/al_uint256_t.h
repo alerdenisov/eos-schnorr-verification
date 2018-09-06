@@ -40,7 +40,7 @@ to do a general rewrite of this class.
 
 #include "al_uint128_t.h"
 
-class al_uint256_t;
+struct al_uint256_t;
 
 // Give al_uint256_t type traits
 namespace std
@@ -59,12 +59,12 @@ struct is_unsigned<al_uint256_t> : std::true_type
 };
 } // namespace std
 
-class al_uint256_t
+struct al_uint256_t
 {
-  private:
+    //   private:
     al_uint128_t UPPER, LOWER;
 
-  public:
+    //   public:
     // Constructors
     al_uint256_t();
     al_uint256_t(const al_uint256_t &rhs);

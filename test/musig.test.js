@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const eosic = __importStar(require("eosic"));
 const eosjs_1 = __importDefault(require("eosjs"));
 require("mocha");
+const { ecc } = eosjs_1.default.modules;
 describe("musig", () => {
     let musigAccount, musigContract;
     const [pub, wif] = [
@@ -25,6 +26,7 @@ describe("musig", () => {
         expireInSeconds: 1000
     });
     beforeEach(async () => {
+        await new Promise(resolve => setTimeout(resolve, 1500));
         ({
             account: musigAccount,
             contract: musigContract
@@ -35,8 +37,12 @@ describe("musig", () => {
         }));
     });
     it("exec", async () => {
+        const contractWif = ecc.seedPrivate(Math.random().toString());
+        const contractPub = ecc.privateToPublic(wif);
+        const hash = ecc.sha256("test content");
+        const signature = ecc.signHash(ecc.sha256("test content"), wif);
         console.log(musigAccount);
-        console.log(await musigContract.exec({
+        console.log(await musigContract.exec(hash, signature, {
             authorization: [musigAccount]
         }));
     });

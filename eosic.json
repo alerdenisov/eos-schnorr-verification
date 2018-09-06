@@ -10,7 +10,7 @@
       "version": "0.0.1.1",
       "description": "Generic EOS contract",
       "entry": "musig.cpp",
-      "checksum": "2adc39432ea9c8eae3b1170b09abf1c4"
+      "checksum": "25c0a28a2321d6c89430554770ff4566"
     }
   }
 }

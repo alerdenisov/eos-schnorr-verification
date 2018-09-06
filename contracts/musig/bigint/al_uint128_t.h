@@ -42,7 +42,7 @@ to do a general rewrite of this class.
 #include <type_traits>
 #include <utility>
 
-class al_uint128_t;
+struct al_uint128_t;
 
 // Give al_uint128_t type traits
 namespace std
@@ -61,12 +61,12 @@ struct is_unsigned<al_uint128_t> : std::true_type
 };
 } // namespace std
 
-class al_uint128_t
+struct al_uint128_t
 {
-  private:
+    //   private:
     uint64_t UPPER, LOWER;
 
-  public:
+    //   public:
     // Constructors
     al_uint128_t();
     al_uint128_t(const al_uint128_t &rhs);

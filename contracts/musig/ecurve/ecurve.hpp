@@ -290,7 +290,7 @@ class ECurve
         return _ecadd(p, p);
     }
 
-    G2Point _ecmul(big d, G2Point p, big z) const
+    G2Point _ecmul(big d, G2Point p) const
     {
         big remaining = big(d);
         G2Point tmp = G2Point(p);
@@ -346,12 +346,12 @@ class ECurve
         // x2 = mulmod(x2, z, n);
         // y2 = mulmod(y2, z, n);
 
-        G2Point a = _ecmul(s, a, 1);
+        G2Point m = _ecmul(s, G2Point(p.X, p.Y, 1));
         // TODO: Inverse Z part
-        auto z = big(a.Z); // _inverse(a.Z);
+        auto z = big(m.Z); // _inverse(m.Z);
         return G1Point(
-            mulmod(a.X, z, n),
-            mulmod(a.Y, z, n));
+            mulmod(m.X, z, n),
+            mulmod(m.Y, z, n));
     }
 
     G1Point ecadd(
